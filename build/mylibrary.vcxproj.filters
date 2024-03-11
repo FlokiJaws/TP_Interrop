@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\catil\Documents\L3\S6\Intero\TP_Interrop\MyCPPLibrary\libmain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\catil\Documents\L3\S6\Intero\TP_Interrop\MyCPPLibrary\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4B447B2D-39F3-3F58-BFEE-705BC02D28DE}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
