@@ -1,0 +1,13 @@
+Attention, par défaut, Visual Studio Code ne prendra pas en charge la complétion de code sur le namespace jawa.awt.*.
+
+Pour contourner ce problème:
+- créer ou éditer le fichier .vscode/settings.json dans votre workspace
+- ajouter la ligne suivante :
+
+"java.completion.filteredTypes" : [ com.sun.* ]
+
+Par exemple, pour un fichier settings.json ne contenant que cette ligne, le fichier ressemble à ça:
+
+{
+   "java.completion.filteredTypes" : [ com.sun.* ]
+}
