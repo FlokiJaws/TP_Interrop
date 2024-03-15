@@ -1,0 +1,383 @@
+2024-03-13 21:28:52 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientConnectionException: Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-199]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:617)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:427)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.message.DbException.get(DbException.java:170)
+	at org.h2.jdbc.JdbcConnection.checkClosed(JdbcConnection.java:1571)
+	at org.h2.jdbc.JdbcStatement.checkClosed(JdbcStatement.java:1237)
+	at org.h2.jdbc.JdbcPreparedStatement.checkClosed(JdbcPreparedStatement.java:1829)
+	at org.h2.jdbc.JdbcStatement.checkClosed(JdbcStatement.java:1211)
+	at org.h2.jdbc.JdbcResultSet.checkClosed(JdbcResultSet.java:3245)
+	at org.h2.jdbc.JdbcResultSet.checkColumnIndex(JdbcResultSet.java:3229)
+	at org.h2.jdbc.JdbcResultSet.get(JdbcResultSet.java:3270)
+	at org.h2.jdbc.JdbcResultSet.getInt(JdbcResultSet.java:332)
+	at Main.main(Main.java:164)
+2024-03-13 21:29:12 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Function alias "MATRIX" already exists; SQL statement:
+CREATE ALIAS MATRIX FOR "Main.getMatrix" [90076-199]
+2024-03-13 22:24:33 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Function alias "MATRIX" already exists; SQL statement:
+CREATE ALIAS MATRIX FOR "Main.getMatrix" [90076-199]
+2024-03-13 22:33:47 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Exception calling user-defined function: "getRGBImage(conn4: url=jdbc:columnlist:connection user=SA, null): null"; SQL statement:
+CREATE TABLE UNEIMAGE AS SELECT * FROM RGBIMAGE(?) [90105-199]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:502)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:427)
+	at org.h2.message.DbException.get(DbException.java:194)
+	at org.h2.message.DbException.convertInvocation(DbException.java:374)
+	at org.h2.engine.FunctionAlias$JavaMethod.getValue(FunctionAlias.java:473)
+	at org.h2.expression.function.JavaFunction.getValueForColumnList(JavaFunction.java:112)
+	at org.h2.table.FunctionTable.<init>(FunctionTable.java:60)
+	at org.h2.command.Parser.readTableFunction(Parser.java:1945)
+	at org.h2.command.Parser.readTableFilter(Parser.java:1892)
+	at org.h2.command.Parser.parseSelectSimpleFromPart(Parser.java:2641)
+	at org.h2.command.Parser.parseSelectSimple(Parser.java:2788)
+	at org.h2.command.Parser.parseSelectSub(Parser.java:2636)
+	at org.h2.command.Parser.parseSelectUnion(Parser.java:2469)
+	at org.h2.command.Parser.parseSelect(Parser.java:2440)
+	at org.h2.command.Parser.parseCreateTable(Parser.java:7906)
+	at org.h2.command.Parser.parseCreate(Parser.java:5818)
+	at org.h2.command.Parser.parsePrepared(Parser.java:846)
+	at org.h2.command.Parser.parse(Parser.java:788)
+	at org.h2.command.Parser.parse(Parser.java:760)
+	at org.h2.command.Parser.prepareCommand(Parser.java:683)
+	at org.h2.engine.Session.prepareLocal(Session.java:627)
+	at org.h2.engine.Session.prepareCommand(Session.java:565)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1292)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:217)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:205)
+	at Main.main(Main.java:180)
+Caused by: java.lang.NullPointerException
+	at java.base/java.io.File.<init>(File.java:278)
+	at Main.getRGBImage(Main.java:118)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.h2.engine.FunctionAlias$JavaMethod.getValue(FunctionAlias.java:460)
+	... 21 more
+2024-03-13 22:47:24 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Exception calling user-defined function: "getRGBImage(conn4: url=jdbc:columnlist:connection user=SA, null): null"; SQL statement:
+CREATE TABLE UNEIMAGE AS SELECT * FROM RGBIMAGE(?) [90105-199]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:502)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:427)
+	at org.h2.message.DbException.get(DbException.java:194)
+	at org.h2.message.DbException.convertInvocation(DbException.java:374)
+	at org.h2.engine.FunctionAlias$JavaMethod.getValue(FunctionAlias.java:473)
+	at org.h2.expression.function.JavaFunction.getValueForColumnList(JavaFunction.java:112)
+	at org.h2.table.FunctionTable.<init>(FunctionTable.java:60)
+	at org.h2.command.Parser.readTableFunction(Parser.java:1945)
+	at org.h2.command.Parser.readTableFilter(Parser.java:1892)
+	at org.h2.command.Parser.parseSelectSimpleFromPart(Parser.java:2641)
+	at org.h2.command.Parser.parseSelectSimple(Parser.java:2788)
+	at org.h2.command.Parser.parseSelectSub(Parser.java:2636)
+	at org.h2.command.Parser.parseSelectUnion(Parser.java:2469)
+	at org.h2.command.Parser.parseSelect(Parser.java:2440)
+	at org.h2.command.Parser.parseCreateTable(Parser.java:7906)
+	at org.h2.command.Parser.parseCreate(Parser.java:5818)
+	at org.h2.command.Parser.parsePrepared(Parser.java:846)
+	at org.h2.command.Parser.parse(Parser.java:788)
+	at org.h2.command.Parser.parse(Parser.java:760)
+	at org.h2.command.Parser.prepareCommand(Parser.java:683)
+	at org.h2.engine.Session.prepareLocal(Session.java:627)
+	at org.h2.engine.Session.prepareCommand(Session.java:565)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1292)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:217)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:205)
+	at Main.main(Main.java:180)
+Caused by: java.lang.NullPointerException
+	at java.base/java.io.File.<init>(File.java:278)
+	at Main.getRGBImage(Main.java:118)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.h2.engine.FunctionAlias$JavaMethod.getValue(FunctionAlias.java:460)
+	... 21 more
+2024-03-13 22:48:52 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Exception calling user-defined function: "getRGBImage(conn4: url=jdbc:columnlist:connection user=SA, null): null"; SQL statement:
+CREATE TABLE UNEIMAGE AS SELECT * FROM RGBIMAGE(?) [90105-199]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:502)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:427)
+	at org.h2.message.DbException.get(DbException.java:194)
+	at org.h2.message.DbException.convertInvocation(DbException.java:374)
+	at org.h2.engine.FunctionAlias$JavaMethod.getValue(FunctionAlias.java:473)
+	at org.h2.expression.function.JavaFunction.getValueForColumnList(JavaFunction.java:112)
+	at org.h2.table.FunctionTable.<init>(FunctionTable.java:60)
+	at org.h2.command.Parser.readTableFunction(Parser.java:1945)
+	at org.h2.command.Parser.readTableFilter(Parser.java:1892)
+	at org.h2.command.Parser.parseSelectSimpleFromPart(Parser.java:2641)
+	at org.h2.command.Parser.parseSelectSimple(Parser.java:2788)
+	at org.h2.command.Parser.parseSelectSub(Parser.java:2636)
+	at org.h2.command.Parser.parseSelectUnion(Parser.java:2469)
+	at org.h2.command.Parser.parseSelect(Parser.java:2440)
+	at org.h2.command.Parser.parseCreateTable(Parser.java:7906)
+	at org.h2.command.Parser.parseCreate(Parser.java:5818)
+	at org.h2.command.Parser.parsePrepared(Parser.java:846)
+	at org.h2.command.Parser.parse(Parser.java:788)
+	at org.h2.command.Parser.parse(Parser.java:760)
+	at org.h2.command.Parser.prepareCommand(Parser.java:683)
+	at org.h2.engine.Session.prepareLocal(Session.java:627)
+	at org.h2.engine.Session.prepareCommand(Session.java:565)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1292)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:217)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:205)
+	at Main.main(Main.java:180)
+Caused by: java.lang.NullPointerException
+	at java.base/java.io.File.<init>(File.java:278)
+	at Main.getRGBImage(Main.java:118)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.h2.engine.FunctionAlias$JavaMethod.getValue(FunctionAlias.java:460)
+	... 21 more
+2024-03-13 22:49:55 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Exception calling user-defined function: "getRGBImage(conn4: url=jdbc:columnlist:connection user=SA, null): null"; SQL statement:
+CREATE TABLE UNEIMAGE AS SELECT * FROM RGBIMAGE(?) [90105-199]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:502)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:427)
+	at org.h2.message.DbException.get(DbException.java:194)
+	at org.h2.message.DbException.convertInvocation(DbException.java:374)
+	at org.h2.engine.FunctionAlias$JavaMethod.getValue(FunctionAlias.java:473)
+	at org.h2.expression.function.JavaFunction.getValueForColumnList(JavaFunction.java:112)
+	at org.h2.table.FunctionTable.<init>(FunctionTable.java:60)
+	at org.h2.command.Parser.readTableFunction(Parser.java:1945)
+	at org.h2.command.Parser.readTableFilter(Parser.java:1892)
+	at org.h2.command.Parser.parseSelectSimpleFromPart(Parser.java:2641)
+	at org.h2.command.Parser.parseSelectSimple(Parser.java:2788)
+	at org.h2.command.Parser.parseSelectSub(Parser.java:2636)
+	at org.h2.command.Parser.parseSelectUnion(Parser.java:2469)
+	at org.h2.command.Parser.parseSelect(Parser.java:2440)
+	at org.h2.command.Parser.parseCreateTable(Parser.java:7906)
+	at org.h2.command.Parser.parseCreate(Parser.java:5818)
+	at org.h2.command.Parser.parsePrepared(Parser.java:846)
+	at org.h2.command.Parser.parse(Parser.java:788)
+	at org.h2.command.Parser.parse(Parser.java:760)
+	at org.h2.command.Parser.prepareCommand(Parser.java:683)
+	at org.h2.engine.Session.prepareLocal(Session.java:627)
+	at org.h2.engine.Session.prepareCommand(Session.java:565)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1292)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:217)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:205)
+	at Main.main(Main.java:169)
+Caused by: java.lang.NullPointerException
+	at java.base/java.io.File.<init>(File.java:278)
+	at Main.getRGBImage(Main.java:118)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.h2.engine.FunctionAlias$JavaMethod.getValue(FunctionAlias.java:460)
+	... 21 more
+2024-03-13 22:52:42 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Exception calling user-defined function: "getRGBImage(conn4: url=jdbc:columnlist:connection user=SA, null): null"; SQL statement:
+CREATE TABLE UNEIMAGE AS SELECT * FROM RGBIMAGE(?) [90105-199]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:502)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:427)
+	at org.h2.message.DbException.get(DbException.java:194)
+	at org.h2.message.DbException.convertInvocation(DbException.java:374)
+	at org.h2.engine.FunctionAlias$JavaMethod.getValue(FunctionAlias.java:473)
+	at org.h2.expression.function.JavaFunction.getValueForColumnList(JavaFunction.java:112)
+	at org.h2.table.FunctionTable.<init>(FunctionTable.java:60)
+	at org.h2.command.Parser.readTableFunction(Parser.java:1945)
+	at org.h2.command.Parser.readTableFilter(Parser.java:1892)
+	at org.h2.command.Parser.parseSelectSimpleFromPart(Parser.java:2641)
+	at org.h2.command.Parser.parseSelectSimple(Parser.java:2788)
+	at org.h2.command.Parser.parseSelectSub(Parser.java:2636)
+	at org.h2.command.Parser.parseSelectUnion(Parser.java:2469)
+	at org.h2.command.Parser.parseSelect(Parser.java:2440)
+	at org.h2.command.Parser.parseCreateTable(Parser.java:7906)
+	at org.h2.command.Parser.parseCreate(Parser.java:5818)
+	at org.h2.command.Parser.parsePrepared(Parser.java:846)
+	at org.h2.command.Parser.parse(Parser.java:788)
+	at org.h2.command.Parser.parse(Parser.java:760)
+	at org.h2.command.Parser.prepareCommand(Parser.java:683)
+	at org.h2.engine.Session.prepareLocal(Session.java:627)
+	at org.h2.engine.Session.prepareCommand(Session.java:565)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1292)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:217)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:205)
+	at Main.main(Main.java:169)
+Caused by: java.lang.NullPointerException
+	at java.base/java.io.File.<init>(File.java:278)
+	at Main.getRGBImage(Main.java:118)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.h2.engine.FunctionAlias$JavaMethod.getValue(FunctionAlias.java:460)
+	... 21 more
+2024-03-13 23:55:37 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Function "RGBIMAGE" not found; SQL statement:
+CREATE TABLE UNEIMAGE AS SELECT * FROM RGBIMAGE('MyJavaProject/src/hand.jpg') [90022-199]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:573)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:427)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.command.Parser.readJavaFunction(Parser.java:3288)
+	at org.h2.command.Parser.readFunction(Parser.java:3495)
+	at org.h2.command.Parser.readTableFunction(Parser.java:1937)
+	at org.h2.command.Parser.readTableFilter(Parser.java:1892)
+	at org.h2.command.Parser.parseSelectSimpleFromPart(Parser.java:2641)
+	at org.h2.command.Parser.parseSelectSimple(Parser.java:2788)
+	at org.h2.command.Parser.parseSelectSub(Parser.java:2636)
+	at org.h2.command.Parser.parseSelectUnion(Parser.java:2469)
+	at org.h2.command.Parser.parseSelect(Parser.java:2440)
+	at org.h2.command.Parser.parseCreateTable(Parser.java:7906)
+	at org.h2.command.Parser.parseCreate(Parser.java:5818)
+	at org.h2.command.Parser.parsePrepared(Parser.java:846)
+	at org.h2.command.Parser.parse(Parser.java:788)
+	at org.h2.command.Parser.parse(Parser.java:760)
+	at org.h2.command.Parser.prepareCommand(Parser.java:683)
+	at org.h2.engine.Session.prepareLocal(Session.java:627)
+	at org.h2.engine.Session.prepareCommand(Session.java:565)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1292)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:217)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:205)
+	at Main.main(Main.java:186)
+2024-03-13 23:56:37 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Method is only allowed for a query. Use execute or executeUpdate instead of executeQuery; SQL statement:
+UPDATE UNEIMAGE SET R = ROUND(0.3*R + 0.59*G + 0.11*B), G=ROUND(0.3*R + 0.59*G + 0.11*B),B=ROUND(0.3*R + 0.59*G + 0.11*B) [90002-199]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:502)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:427)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.message.DbException.get(DbException.java:170)
+	at org.h2.command.Prepared.query(Prepared.java:229)
+	at org.h2.command.CommandContainer.query(CommandContainer.java:145)
+	at org.h2.command.Command.executeQuery(Command.java:202)
+	at org.h2.jdbc.JdbcStatement.executeQuery(JdbcStatement.java:85)
+	at Main.main(Main.java:189)
+2024-03-14 00:25:09 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "((0.0))" [22018-199]
+2024-03-14 00:25:09 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Function alias "RGBIMAGE" already exists; SQL statement:
+CREATE ALIAS RGBIMAGE FOR "Main.getRGBImage" [90076-199]
+2024-03-14 00:51:33 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Function alias "RGBIMAGE" already exists; SQL statement:
+CREATE ALIAS RGBIMAGE FOR "Main.getRGBImage" [90076-199]
+2024-03-14 01:00:40 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Exception calling user-defined function: "getMatrix(conn4: url=jdbc:columnlist:connection user=SA, null): Cannot invoke ""java.lang.Integer.intValue()"" because ""size"" is null"; SQL statement:
+SELECT * FROM MATRIX(?) ORDER BY X, Y [90105-199]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:502)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:427)
+	at org.h2.message.DbException.get(DbException.java:194)
+	at org.h2.message.DbException.convertInvocation(DbException.java:374)
+	at org.h2.engine.FunctionAlias$JavaMethod.getValue(FunctionAlias.java:473)
+	at org.h2.expression.function.JavaFunction.getValueForColumnList(JavaFunction.java:112)
+	at org.h2.table.FunctionTable.<init>(FunctionTable.java:60)
+	at org.h2.command.Parser.readTableFunction(Parser.java:1945)
+	at org.h2.command.Parser.readTableFilter(Parser.java:1892)
+	at org.h2.command.Parser.parseSelectSimpleFromPart(Parser.java:2641)
+	at org.h2.command.Parser.parseSelectSimple(Parser.java:2788)
+	at org.h2.command.Parser.parseSelectSub(Parser.java:2636)
+	at org.h2.command.Parser.parseSelectUnion(Parser.java:2469)
+	at org.h2.command.Parser.parseSelect(Parser.java:2440)
+	at org.h2.command.Parser.parsePrepared(Parser.java:814)
+	at org.h2.command.Parser.parse(Parser.java:788)
+	at org.h2.command.Parser.parse(Parser.java:760)
+	at org.h2.command.Parser.prepareCommand(Parser.java:683)
+	at org.h2.engine.Session.prepareLocal(Session.java:627)
+	at org.h2.engine.Session.prepareCommand(Session.java:565)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1292)
+	at org.h2.jdbc.JdbcPreparedStatement.<init>(JdbcPreparedStatement.java:77)
+	at org.h2.jdbc.JdbcConnection.prepareStatement(JdbcConnection.java:349)
+	at Main.main(Main.java:174)
+Caused by: java.lang.NullPointerException: Cannot invoke "java.lang.Integer.intValue()" because "size" is null
+	at Main.getMatrix(Main.java:82)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.h2.engine.FunctionAlias$JavaMethod.getValue(FunctionAlias.java:460)
+	... 19 more
+2024-03-14 21:55:17 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Exception calling user-defined function: "getRGBImage(conn8: url=jdbc:columnlist:connection user=SA, MyJavaProject/src/building.jpg): Can't read input file!"; SQL statement:
+SELECT * FROM RGBIMAGE('MyJavaProject/src/building.jpg') [90105-199]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:502)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:427)
+	at org.h2.message.DbException.get(DbException.java:194)
+	at org.h2.message.DbException.convertInvocation(DbException.java:374)
+	at org.h2.engine.FunctionAlias$JavaMethod.getValue(FunctionAlias.java:473)
+	at org.h2.expression.function.JavaFunction.getValueForColumnList(JavaFunction.java:112)
+	at org.h2.table.FunctionTable.<init>(FunctionTable.java:60)
+	at org.h2.command.Parser.readTableFunction(Parser.java:1945)
+	at org.h2.command.Parser.readTableFilter(Parser.java:1892)
+	at org.h2.command.Parser.parseSelectSimpleFromPart(Parser.java:2641)
+	at org.h2.command.Parser.parseSelectSimple(Parser.java:2788)
+	at org.h2.command.Parser.parseSelectSub(Parser.java:2636)
+	at org.h2.command.Parser.parseSelectUnion(Parser.java:2469)
+	at org.h2.command.Parser.parseSelect(Parser.java:2440)
+	at org.h2.command.Parser.parsePrepared(Parser.java:814)
+	at org.h2.command.Parser.parse(Parser.java:788)
+	at org.h2.command.Parser.parse(Parser.java:760)
+	at org.h2.command.Parser.prepareCommand(Parser.java:683)
+	at org.h2.engine.Session.prepareLocal(Session.java:627)
+	at org.h2.engine.Session.prepareCommand(Session.java:565)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1292)
+	at org.h2.jdbc.JdbcPreparedStatement.<init>(JdbcPreparedStatement.java:77)
+	at org.h2.jdbc.JdbcConnection.prepareStatement(JdbcConnection.java:349)
+	at Main.main(Main.java:209)
+Caused by: javax.imageio.IIOException: Can't read input file!
+	at java.desktop/javax.imageio.ImageIO.read(ImageIO.java:1308)
+	at Main.getRGBImage(Main.java:124)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.h2.engine.FunctionAlias$JavaMethod.getValue(FunctionAlias.java:460)
+	... 19 more
+2024-03-14 22:00:14 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Function alias "GAUSS" already exists; SQL statement:
+CREATE ALIAS GAUSS FOR "Main.getGaussienne" [90076-199]
+2024-03-14 23:12:40 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Function "RGBIMAGE2" not found; SQL statement:
+SELECT * FROM RGBIMAGE2('MyJavaProject/src/building.png') [90022-199]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:573)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:427)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.command.Parser.readJavaFunction(Parser.java:3288)
+	at org.h2.command.Parser.readFunction(Parser.java:3495)
+	at org.h2.command.Parser.readTableFunction(Parser.java:1937)
+	at org.h2.command.Parser.readTableFilter(Parser.java:1892)
+	at org.h2.command.Parser.parseSelectSimpleFromPart(Parser.java:2641)
+	at org.h2.command.Parser.parseSelectSimple(Parser.java:2788)
+	at org.h2.command.Parser.parseSelectSub(Parser.java:2636)
+	at org.h2.command.Parser.parseSelectUnion(Parser.java:2469)
+	at org.h2.command.Parser.parseSelect(Parser.java:2440)
+	at org.h2.command.Parser.parsePrepared(Parser.java:814)
+	at org.h2.command.Parser.parse(Parser.java:788)
+	at org.h2.command.Parser.parse(Parser.java:760)
+	at org.h2.command.Parser.prepareCommand(Parser.java:683)
+	at org.h2.engine.Session.prepareLocal(Session.java:627)
+	at org.h2.engine.Session.prepareCommand(Session.java:565)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1292)
+	at org.h2.jdbc.JdbcPreparedStatement.<init>(JdbcPreparedStatement.java:77)
+	at org.h2.jdbc.JdbcConnection.prepareStatement(JdbcConnection.java:349)
+	at Main.main(Main.java:237)
+2024-03-14 23:14:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "RGBIMAGE2" not found; SQL statement:
+SELECT i.X, i.Y, AVG(i.R * g.VALEUR) AS R, AVG(i.G * g.VALEUR) AS G, AVG(i.B * g.VALEUR) AS B FROM RGBIMAGE2 i CROSS JOIN GAUSSIENNE g WHERE g.X BETWEEN ? AND ? AND g.Y BETWEEN ? AND ? GROUP BY i.X, i.Y [42102-199]
+2024-03-14 23:14:36 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "RGBIMAGE" not found; SQL statement:
+SELECT i.X, i.Y, AVG(i.R * g.VALEUR) AS R, AVG(i.G * g.VALEUR) AS G, AVG(i.B * g.VALEUR) AS B FROM RGBIMAGE i CROSS JOIN GAUSSIENNE g WHERE g.X BETWEEN ? AND ? AND g.Y BETWEEN ? AND ? GROUP BY i.X, i.Y [42102-199]
+2024-03-14 23:16:14 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "UNEIMAGE" not found; SQL statement:
+SELECT i.X, i.Y, AVG(i.R * g.VALEUR) AS R, AVG(i.G * g.VALEUR) AS G, AVG(i.B * g.VALEUR) AS B FROM UNEIMAGE i CROSS JOIN GAUSSIENNE g WHERE g.X BETWEEN ? AND ? AND g.Y BETWEEN ? AND ? GROUP BY i.X, i.Y [42102-199]
+2024-03-14 23:24:33 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE UNEIMAGE AS SELECT * FROM RGBIMAGE([*]\'MyJavaProject/src/building.png\')"; SQL statement:
+CREATE TABLE UNEIMAGE AS SELECT * FROM RGBIMAGE(\'MyJavaProject/src/building.png\') [42000-199]
+2024-03-14 23:26:09 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE UNEIMAGE AS SELECT * FROM RGBIMAGE(''MYJAVAPROJECT[*]/SRC/BUILDING.PNG'') "; expected "[, ::, *, /, %, +, -, ||, ~, !~, NOT, LIKE, ILIKE, REGEXP, IS, IN, BETWEEN, AND, OR, ,, )"; SQL statement:
+CREATE TABLE UNEIMAGE AS SELECT * FROM RGBIMAGE(''MyJavaProject/src/building.png'') [42001-199]
+2024-03-14 23:28:40 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "GAUSSIENNE" not found; SQL statement:
+SELECT i.X, i.Y, AVG(i.R * g.VALEUR) AS R, AVG(i.G * g.VALEUR) AS G, AVG(i.B * g.VALEUR) AS B FROM UNEIMAGE i CROSS JOIN GAUSSIENNE g WHERE g.X BETWEEN ? AND ? AND g.Y BETWEEN ? AND ? GROUP BY i.X, i.Y [42102-199]
+2024-03-14 23:29:46 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "GAUSSIENNE" not found; SQL statement:
+SELECT i.X, i.Y, AVG(i.R * g.VALEUR) AS R, AVG(i.G * g.VALEUR) AS G, AVG(i.B * g.VALEUR) AS B FROM UNEIMAGE i CROSS JOIN GAUSSIENNE g WHERE g.X BETWEEN ? AND ? AND g.Y BETWEEN ? AND ? GROUP BY i.X, i.Y [42102-199]
+2024-03-14 23:31:26 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Function alias "GAUSSIENNE" already exists; SQL statement:
+CREATE ALIAS GAUSSIENNE FOR "Main.getGaussienne" [90076-199]
+2024-03-14 23:41:45 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Function alias "GAUSS" already exists; SQL statement:
+CREATE ALIAS GAUSS FOR "Main.getGaussienne" [90076-199]
+2024-03-14 23:44:02 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "GAUSSIENNE" not found; SQL statement:
+SELECT i.X, i.Y, AVG(i.R * g.VALEUR) AS R, AVG(i.G * g.VALEUR) AS G, AVG(i.B * g.VALEUR) AS B FROM UNEIMAGE i CROSS JOIN GAUSSIENNE g WHERE g.X BETWEEN ? AND ? AND g.Y BETWEEN ? AND ? GROUP BY i.X, i.Y [42102-199]
+2024-03-14 23:46:35 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "GAUSS" not found; SQL statement:
+SELECT i.X, i.Y, AVG(i.R * g.VALEUR) AS R, AVG(i.G * g.VALEUR) AS G, AVG(i.B * g.VALEUR) AS B FROM UNEIMAGE i CROSS JOIN GAUSS g WHERE g.X BETWEEN ? AND ? AND g.Y BETWEEN ? AND ? GROUP BY i.X, i.Y [42102-199]
+2024-03-14 23:48:46 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "GAUSS" not found; SQL statement:
+SELECT i.X, i.Y, AVG(i.R * g.VALEUR) AS R, AVG(i.G * g.VALEUR) AS G, AVG(i.B * g.VALEUR) AS B FROM UNEIMAGE i CROSS JOIN GAUSS g WHERE g.X BETWEEN ? AND ? AND g.Y BETWEEN ? AND ? GROUP BY i.X, i.Y [42102-199]

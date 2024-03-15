@@ -95,15 +95,15 @@ public class Main {
             rs.addColumn("X", Types.INTEGER, 10, 0);
             rs.addColumn("Y", Types.INTEGER, 10, 0);
             rs.addColumn("VALEUR", Types.FLOAT, 10, 0);
-
-            int indice = size/2;
-            int depart = 0 - indice;
-
-            for (int x = depart; x <= indice; x++) {
-                    rs.addRow(x, x); 
+            
+            for (int x = -size/2; x <= size/2; x++) {
+                for (int y = -size/2; y <= size/2; y++) {
+                    rs.addRow(x, y,200 * (Math.exp(-x*x-y*y)));
+                }
             }
             return rs;
         }
+
 
     public static ResultSet getRGBImage(Connection conn, String path) throws
         SQLException, IOException{
@@ -133,6 +133,43 @@ public class Main {
             return rs;
         }
 
+        public static void gaussian(Connection conn, String tableName, int k) throws SQLException, IOException {
+            String sql = "SELECT i.X, i.Y, AVG(i.R * g.VALEUR) AS R, AVG(i.G * g.VALEUR) AS G, AVG(i.B * g.VALEUR) AS B " +
+                         "FROM " + tableName + " i " +
+                         "CROSS JOIN GAUSS g " +
+                         "WHERE g.X BETWEEN ? AND ? AND g.Y BETWEEN ? AND ? " +
+                         "GROUP BY i.X, i.Y";
+                         
+                         BufferedImage image = ImageIO.read(new File("MyJavaProject/src/building.png"));
+
+                         int width = image.getWidth();
+                         int height = image.getHeight();
+    
+            try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+                stmt.setInt(1, -k / 2);
+                stmt.setInt(2, k / 2);
+                stmt.setInt(3, -k / 2);
+                stmt.setInt(4, k / 2);
+    
+                ResultSet rs = stmt.executeQuery();
+    
+                BufferedImage filteredImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+    
+                while (rs.next()) {
+                    int x = rs.getInt("X");
+                    int y = rs.getInt("Y");
+                    int red = rs.getInt("R");
+                    int green = rs.getInt("G");
+                    int blue = rs.getInt("B");
+    
+                    int rgb = (red << 16) | (green << 8) | blue;
+                    filteredImage.setRGB(x, y, rgb);
+                }
+    
+                ImageIO.write(filteredImage, "png", new File("gaussian_" + k + ".png"));
+            }
+        }
+
         public static void main(String[] args) {
             String connUrl = "jdbc:h2:./h2database";
             String username = "sa";
@@ -157,30 +194,62 @@ public class Main {
               Statement rgbImageStat = conn.createStatement();
               rgbImageStat.execute("CREATE ALIAS RGBIMAGE FOR \"Main.getRGBImage\"");
 
-              
               PreparedStatement prep = conn.prepareStatement("SELECT * FROM RGBIMAGE(\'MyJavaProject/src/hand.jpg\')"); // Premiere requête
               ResultSet rs = prep.executeQuery();
               while (rs.next()) {
-                System.out.println(rs.getInt(1) + "/" + rs.getInt(2) + "/" + rs.getInt(3) + "/" + rs.getInt(4) + "/" + rs.getInt(5));
+                //System.out.println(rs.getInt(1) + "/" + rs.getInt(2) + "/" + rs.getInt(3) + "/" + rs.getInt(4) + "/" + rs.getInt(5));
               }
               prep.close(); // Fermeture de la première requête
 
-              /*
-              PreparedStatement prepAverage = conn.prepareStatement("SELECT AVERAGE(X) FROM MATRIX(2)"); // Deuxième requête 
-              ResultSet rsAverage = prepAverage.executeQuery();
-              while (rsAverage.next()) {
-                System.out.println("Moyenne de X : " + rsAverage.getInt(1));
-              }
-              prepAverage.close(); // Fermeture de la deuxième requête
-              */
+              /*PreparedStatement prepGauss = conn.prepareStatement("SELECT * FROM GAUSS(5)"); 
+                              ResultSet rsGauss = prepGauss.executeQuery();
+                              while (rsGauss.next()) {
+                                  System.out.println(rsGauss.getInt(1) + "/" + rsGauss.getInt(2) + "/" + rsGauss.getFloat(3));
+                              }
+                              prepGauss.close();*/
 
             } catch (Exception e) {
               e.printStackTrace(System.err);
             }
 
+            //Question 3
+            /*try (Connection conn = DriverManager.getConnection(connUrl, username,
+            password)) {
+                Statement s = conn.createStatement();
+                s.execute("CREATE TABLE UNEIMAGE AS SELECT * FROM RGBIMAGE(\'MyJavaProject/src/hand.jpg\')"); 
+                s.executeUpdate("UPDATE UNEIMAGE SET R = ROUND(0.3*R + 0.59*G + 0.11*B), G=ROUND(0.3*R + 0.59*G + 0.11*B),B=ROUND(0.3*R + 0.59*G + 0.11*B)");
+                ResultSet rs = s.executeQuery("SELECT * FROM UNEIMAGE");
+                BufferedImage image = ImageIO.read(new File("MyJavaProject\\src\\hand.jpg"));
+                int width = image.getWidth();
+                int height = image.getHeight();
+                BufferedImage newImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+                while (rs.next()) {
+                    int couleur= rs.getInt(3)<<16 | rs.getInt(4)<<8 | rs.getInt(5);
+                    newImage.setRGB(rs.getInt(1), rs.getInt(2), couleur);
+                }
+                ImageIO.write(newImage, "png", new File("niveauxdegris.png"));
+            } catch (Exception e) {
+                e.printStackTrace(System.err);
+            }*/
+
+            //Question 4
+            try (Connection conn = DriverManager.getConnection(connUrl, username,password)) {
+                Statement s = conn.createStatement();
+                s.execute("CREATE TABLE UNEIMAGE AS SELECT * FROM RGBIMAGE('MyJavaProject/src/building.png')");
+                PreparedStatement prep = conn.prepareStatement("SELECT * FROM RGBIMAGE(\'MyJavaProject/src/building.png\')");
+                gaussian(conn, "UNEIMAGE", 11);
+                prep.close();
+            } catch (Exception e) {
+                e.printStackTrace(System.err);
+            }
+
+
             // Relancer sans avoir a supprimer le fichier a chaque fois 
             File file = new File("h2database.mv.db");
             file.delete();
+
+            
+
           }
 }
     
